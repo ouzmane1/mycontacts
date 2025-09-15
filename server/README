@@ -1,0 +1,10 @@
+
+
+Mongoose : permet la connexion à mongodb et de definir des modules pour nos collections de donnees 
+Dotenv : C'est un modules utilisé pour charger nos variables d'environnement à partir de .env
+
+
+a ajouter () dossier 
+service controller middleware
+
+node app.js
