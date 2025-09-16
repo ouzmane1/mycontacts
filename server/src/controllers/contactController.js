@@ -6,7 +6,8 @@ const contacts = [];
 export const createContact = async (req, res) => {
     try {
         const { firstName, lastName, phone } = req.body;
-        const newContact = new Contact ({ firstName, lastName, phone });
+        const userId = req.user.userId;
+        const newContact = new Contact ({ firstName, lastName, phone, userId });
         await newContact.save();
         res.status(201).json(newContact);
     } catch (error) {
@@ -17,7 +18,8 @@ export const createContact = async (req, res) => {
 // READ
 export const getContacts = async (req, res) => {
     try {
-        const contacts = await Contact.find();
+        const userId = req.user.userId;
+        const contacts = await Contact.find({ userId });
         res.json(contacts);
     } catch (error) {
         res.status(500).json({ message: error.message });

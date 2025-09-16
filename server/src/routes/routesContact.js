@@ -1,5 +1,6 @@
 import express from 'express';
 import { createContact, getContacts, updateContact, deleteContact, getContactById } from '../controllers/contactController.js';
+import { authMiddleware } from '../middlewares/authMiddleware.js';
 
 const routerContact = express.Router();
 
@@ -29,7 +30,7 @@ const routerContact = express.Router();
  *       400:
  *         description: Données invalides
  */
-routerContact.post('/', createContact);
+routerContact.post('/', authMiddleware, createContact);
 /**
  * @swagger
  *  /api/contacts/:
@@ -43,7 +44,7 @@ routerContact.post('/', createContact);
  *        500:
  *          description: Erreur serveur
  */
-routerContact.get('/', getContacts);
+routerContact.get('/',authMiddleware, getContacts);
 
 /**
  * @swagger

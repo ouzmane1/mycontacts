@@ -30,10 +30,12 @@ export default function Connexion() {
       if (data.success) {
         setIsSuccess(true);
         setMessage(data.message); 
+
         localStorage.setItem("token", data.token);
         localStorage.setItem("email", data.email);
+
         setTimeout(() => {
-          navigate("/");
+          navigate("/contacts");
         }, 1000);
       } else {
         setIsSuccess(false);
