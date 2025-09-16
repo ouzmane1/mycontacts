@@ -25,22 +25,26 @@ export const register = async (req, res) => {
 }
 
 export const login = async (req, res) => {
+    try {
+        const { email, password } = req.body;
 
-    const { email, password } = req.body;
+        const user = await User.findOne({ email });
+        if(!user){
+            return res.json({success: false, message: 'Utilisateur inexistant'});
+        }
 
-    const user = await User.findOne({ email });
-    if(!user){
-        return res.json({success: false, message: 'Utilisateur inexistant'});
+        const isPasswordValid = await bcrypt.compare(password, user.password);
+        if(!isPasswordValid){
+            return res.json({success: false, message: 'Mot de passe incorrect'});
+        }
+
+        const token = jwt.sign({userId: user._id}, process.env.JWT_SECRET, {expiresIn: '2h'});
+
+        res.json({success: true, message: 'Connexion réussie', token});
+    } catch (error) {
+        res.status(500).json({ success: false, message: error.message });
     }
-
-    const isPasswordValid = await bcrypt.compare(password, user.password);
-    if(!isPasswordValid){
-        return res.json({success: false, message: 'Mot de passe incorrect'});
-    }
-
-    const token = jwt.sign({userId: user._id}, process.env.JWT_SECRET, {expiresIn: '2h'});
-
-    res.json({success: true, message: 'Connexion réussie', token});
+    
 }
 
 export const logout = (req, res) => {
