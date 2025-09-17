@@ -1,10 +1,58 @@
+# MyContacts Backend API
 
+API REST sécurisée pour gérer les contacts d’un utilisateur authentifié.  
+Développée avec Node.js, Express et MongoDB Atlas.
 
-Mongoose : permet la connexion à mongodb et de definir des modules pour nos collections de donnees 
-Dotenv : C'est un modules utilisé pour charger nos variables d'environnement à partir de .env
+## Déploiement
 
+- **Backend (Render)** : *(à compléter si déployé)*  
+- **Swagger** : [http://localhost:3000/api-docs](http://localhost:3000/api-docs)
 
-a ajouter () dossier 
-service controller middleware
+## Installation & Lancement  
 
-node app.js
+### Cloner le projet
+
+    git clone https://github.com/ouzmane1/mycontacts.git
+    cd server
+    npm install
+
+### Cloner le projet
+
+    mongo_contact = 'mongodb+srv://ousmanendom901_db_user:Lzts1HZBRzj9ReO5@clustercontacts.owpelyf.mongodb.net/?retryWrites=true&w=majority&appName=ClusterContacts'
+    JWT_SECRET = 'ousmane'
+
+### Lancer le serveur
+
+    node app.js
+
+## Tests Jest
+
+### Tests disponibles 
+
+- **authMiddleware.test.js**
+- **contactsController.test.js**
+
+### Identifiants test 
+
+    {
+    "email": "ousmane@test.fr",
+    "password": "ousmane"
+    }
+
+## Endpoints Principaux  
+
+### Utilisateurs  
+
+- **POST** `/api/auth/register` → Créer un nouvel utilisateur  
+- **POST** `/api/auth/login` → Authentifier un utilisateur  
+
+### Contacts  
+
+- **GET** `/api/contacts` (JWT requis) → Récupérer les contacts  
+- **POST** `/api/contacts` (JWT requis) → Ajouter un contact  
+- **PUT** `/api/contacts/:id` (JWT requis) → Modifier un contact  
+- **DELETE** `/api/contacts/:id` (JWT requis) → Supprimer un contact
+
+## Documentation Swagger
+
+- Accessible via /api-docs une fois le serveur lancé.

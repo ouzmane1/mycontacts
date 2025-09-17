@@ -79,7 +79,7 @@ routerContact.get('/',authMiddleware, getContacts);
  *       404:
  *         description: Contact non trouvé
  */
-routerContact.get('/:id', getContactById);
+routerContact.get('/:id',authMiddleware, getContactById);
 /**
  * @swagger
  * /api/contacts/{id}:
@@ -126,7 +126,7 @@ routerContact.get('/:id', getContactById);
  *       404:
  *         description: Contact non trouvé
  */
-routerContact.put('/:id', updateContact);
+routerContact.put('/:id',authMiddleware, updateContact);
 /**
  * @swagger
  * /api/contacts/{id}:
@@ -147,6 +147,6 @@ routerContact.put('/:id', updateContact);
  *       404:
  *         description: Contact non trouvé
  */
-routerContact.delete('/:id', deleteContact);
+routerContact.delete('/:id',authMiddleware, deleteContact);
 
 export default routerContact;

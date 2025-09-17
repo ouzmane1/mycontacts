@@ -26,17 +26,7 @@ export const getContacts = async (req, res) => {
     }
 };
 
-// UPDATE
-// export const updateContact = (req, res) => {
-//     const contact = contacts.find(c => c.id === parseInt(req.params.id));
-//     if (!contact) {
-//         return res.status(404).json({ message: "Contact non trouvé" });
-//     }
-//     contact.firstName = req.body.firstName || contact.firstName;
-//     contact.lastName = req.body.lastName || contact.lastName;
-//     contact.phone = req.body.phone || contact.phone;
-//     res.json(contact);
-// };
+
 export const updateContact = async (req, res) => {
     try {
         const { firstName, lastName, phone } = req.body;
@@ -78,3 +68,5 @@ export const getContactById = async (req, res) => {
         res.status(400).json({ message: "ID invalide" });
     }
 };
+
+export default { createContact, getContacts, updateContact, deleteContact, getContactById };
