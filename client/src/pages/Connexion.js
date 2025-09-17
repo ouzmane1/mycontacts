@@ -9,7 +9,7 @@ export default function Connexion() {
   const [message, setMessage] = useState("");
   const [isSuccess, setIsSuccess] = useState(null);
 
-  const API_URL = process.env.API_URL;
+  const API_URL = process.env.REACT_APP_API_URL;
 
   const navigate = useNavigate();
 
