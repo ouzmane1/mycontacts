@@ -9,7 +9,7 @@ export default function Home() {
   const [message, setMessage] = useState("");
 
   const token = localStorage.getItem("token");
-  const API_URL = process.env.API_URL; 
+  const API_URL = process.env.REACT_APP_API_URL; 
 
   const fetchContacts = async () => {
     try {
