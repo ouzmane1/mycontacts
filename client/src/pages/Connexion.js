@@ -9,6 +9,8 @@ export default function Connexion() {
   const [message, setMessage] = useState("");
   const [isSuccess, setIsSuccess] = useState(null);
 
+  const API_URL = process.env.API_URL;
+
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -17,7 +19,7 @@ export default function Connexion() {
     setIsSuccess(null);
 
     try {
-      const response = await fetch("http://localhost:3000/api/auth/login", {
+      const response = await fetch(`${API_URL}/api/auth/login/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

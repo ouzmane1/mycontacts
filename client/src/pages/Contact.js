@@ -8,11 +8,12 @@ export default function Home() {
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
 
-  const token = localStorage.getItem("token"); 
+  const token = localStorage.getItem("token");
+  const API_URL = process.env.API_URL; 
 
   const fetchContacts = async () => {
     try {
-      const response = await fetch("http://localhost:3000/api/contacts/", {
+      const response = await fetch(`${API_URL}/api/contacts/`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (!response.ok) throw new Error("Impossible de récupérer les contacts");
@@ -32,7 +33,7 @@ export default function Home() {
     setMessage("");
 
     try {
-      const response = await fetch("http://localhost:3000/api/contacts/", {
+      const response = await fetch(`${API_URL}/api/contacts/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -61,7 +62,7 @@ export default function Home() {
     setMessage("");
     try {
       const response = await fetch(
-        `http://localhost:3000/api/contacts/${id}`,
+        `${API_URL}/api/contacts/${id}`,
         {
           method: "DELETE",
           headers: {

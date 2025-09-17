@@ -7,6 +7,8 @@ export default function Inscription() {
   const [message, setMessage] = useState("");
   const [isSuccess, setIsSuccess] = useState(null);
 
+  const API_URL = process.env.API_URL;
+
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -15,7 +17,7 @@ export default function Inscription() {
     setIsSuccess(null);
 
     try {
-      const response = await fetch("http://localhost:3000/api/auth/register", {
+      const response = await fetch(`${API_URL}/api/auth/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
